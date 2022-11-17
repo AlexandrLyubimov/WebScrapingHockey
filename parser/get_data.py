@@ -221,6 +221,6 @@ def get_data(result, league_name, amount_team):
     for line in parsed:
         resp = requests.post(url=SERVER_API_URL_UPLOAD, headers={"Authorization": SERVER_API_TOKEN},
                              json=line)
-        print(f'SENDING: {line} RESULT:{resp.text}')
+        # print(f'SENDING: {line} RESULT:{resp.text}')
 
-    print(f'SENDING: {league_name}_file RESULT:DONE')
+    print(f'SEND: {league_name}_file')
