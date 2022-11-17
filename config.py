@@ -1,9 +1,16 @@
 import configparser
+import os
+from pathlib import Path
 
 
-CONFIG_FILE = 'config.ini'
+path = Path(__file__)
+ROOT_DIR = path.parent.absolute()
+config_path = os.path.join(ROOT_DIR, "config.ini")
 config = configparser.ConfigParser()
-config.read(CONFIG_FILE)
+config.read(config_path)
 
-SERVER_API_URL_UPLOAD = config.get('SERVER_API', 'URL_UPLOAD_RESULT')
-SERVER_API_TOKEN = config.get('SERVER_API', 'TOKEN')
+try:
+    SERVER_API_URL_UPLOAD = config.get('SERVER_API', 'URL_UPLOAD_RESULT')
+    SERVER_API_TOKEN = config.get('SERVER_API', 'TOKEN')
+except configparser.ConfigParser.NoOptionError:
+    print('could not read configuration file')
