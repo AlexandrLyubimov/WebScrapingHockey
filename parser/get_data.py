@@ -105,8 +105,9 @@ def get_points(team):
 # function get html in text form
 def get_html(url, amount_team):
     options = undetected_chromedriver.ChromeOptions()
-    options.headless = True
-    options.add_argument('--headless')
+    # options.headless = True
+    # options.add_argument('--headless')
+    options.add_argument('--disable-blink-features=AutomationControlled')
     driver = undetected_chromedriver.Chrome(options=options)
     try:
         driver.get(url)
